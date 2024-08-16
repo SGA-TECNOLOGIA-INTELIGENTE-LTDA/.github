@@ -1,0 +1,13 @@
+{
+    "name": "Octo Organization Workflow 3",
+    "description": "Octo Organization CI workflow template 3.",
+    "iconName": "bash",
+    "categories": [
+        "Go"
+    ],
+    "filePatterns": [
+        "package.json$",
+        "^Dockerfile",
+        ".*\\.md$"
+    ]
+}
