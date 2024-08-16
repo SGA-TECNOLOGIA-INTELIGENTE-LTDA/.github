@@ -1,7 +1,7 @@
 {
     "name": "Octo Organization Workflow",
     "description": "Octo Organization CI workflow template.",
-    "iconName": "bash.png",
+    "iconName": "bash.ico",
     "categories": [
         "Go"
     ],
