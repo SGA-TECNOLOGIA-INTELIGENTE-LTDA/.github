@@ -1,0 +1,39 @@
+name: Play Store CI
+
+on:
+  push:
+    branches: [ $default-branch ]
+  pull_request:
+    branches: [ $default-branch ]
+env:
+  build_path: build
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Script to build
+        run: npx build
+
+      - uses: actions/upload-artifact@v4
+        with:          
+          name: ${{ github.job }}          
+          path: $build_path
+          retention-days: 3
+          overwrite: true
+
+      # https://github.com/marketplace/actions/upload-android-app-bundle-to-google-play-store OR
+      # https://github.com/marketplace/actions/upload-android-release-to-play-store -> how create API Key
+      
+      - name: Upload .aab to Production Track
+        id: upload_production
+        uses: KevinRohn/github-action-upload-play-store@v1.0.0
+        with:
+          service_account_json: ${{ secrets.SERVICE_ACCOUNT_JSON }}
+          package_name: "com.example.myapp"
+          aab_file_path: "./build/outputs/bundle/release/app-release.aab"
+          track: "production"
+          release_status: "completed"

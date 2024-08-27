@@ -1,0 +1,13 @@
+{
+    "name": "Play Store Workflow",
+    "description": "Play Store CI workflow template.",
+    "iconName": "play-store",
+    "categories": [
+        "Javascript"
+    ],
+    "filePatterns": [
+        "package.json$",
+        "^Dockerfile",
+        ".*\\.md$"
+    ]
+}
